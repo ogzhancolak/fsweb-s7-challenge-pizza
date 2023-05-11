@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quattrocento&family=Satisfy&display=swap');
+
+#footer-container {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+#footer-main-container {
+    display: flex;
+    justify-content: center;
+}
+
+#footer-main-container-one {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 30px 0px;
+}
+
+#footer-main-container-two {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#footer-main-container-two-head {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 0px;
+}
+
+.footer-img {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+.icons {
+    padding: 0px 10px;
+}
+
+#copyright {
+    color: #5F5F5F;
+    margin-bottom: 6px;
+}
+
+.footer-contents {
+    max-width: 350px;
+}
+
+.footer-contents p {
+    font-size: 1.2em;
+}
+
+.footer-contents h2 {
+    font-size: 1.8em;
+}
+
+.footer-contents h1 {
+    font-size: 3em;
+    font-family: 'Quattrocento', sans-serif;
+}

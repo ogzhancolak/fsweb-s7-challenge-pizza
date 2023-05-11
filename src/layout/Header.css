@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quattrocento&family=Satisfy&display=swap');
+
+
+#menu {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 103vh;
+    background-image: url('../Assets/mvp-banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.menu-title {
+    display: flex;
+    justify-content: start;
+    font-family: 'Quattrocento', serif;
+    font-size: 50px;
+    margin-bottom: 50px;
+    margin-top: 150px;
+}
+
+.menu-subtitle {
+    font-family: 'Satisfy', cursive;
+    font-size: 25px;
+    margin-top: 105px;
+    margin-bottom: -50px;
+    color: #FDC913;
+}
+
+#menu-taglines-one {
+    font-family: 'Barlow', sans-serif;
+    font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -50px;
+}
+
+#menu-taglines-two {
+    font-family: 'Barlow', sans-serif;
+    font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.menu-button {
+    font-size: 20px;
+    padding: 20px 35px;
+    background-color: #FDC913;
+    border-radius: 30px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.menu-button:hover {
+    background-color: #ffc800;
+    transform: scale(1.1);
+}

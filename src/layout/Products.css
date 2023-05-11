@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quattrocento&family=Satisfy&display=swap');
+
+#header {
+    background-color: #CE2829;
+    margin-top: -34px;
+}
+
+#header h2 {
+    text-align: center;
+    color: white;
+    font-family: 'Quattrocento', sans-serif;
+    font-size: 40px;
+    padding: 20px;
+}

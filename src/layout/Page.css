@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quattrocento&family=Satisfy&display=swap');
+
+#hot-menu-title-one {
+    text-align: center;
+    font-family: 'Satify', cursive;
+    color: #CE2829;
+    font-size: 35px;
+    margin-bottom: -20px;
+}
+
+#hot-menu-title-two {
+    text-align: center;
+    font-family: 'Quattrocento', serif;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+#hot-menu-nav-title {
+    background-color: rgb(247, 244, 240);
+}
+
+#hot-menu-nav-ul li {
+    background-color: white;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+#all-container {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+#all-container div {
+    margin: 25px 10px;
+}
+
+#card-one {
+    background-image: url('../Assets/adv-aseets/kart-1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 530px;
+    width: 630px;
+    border-radius: 1rem;
+}
+
+#card-two {
+    background-image: url('../Assets/adv-aseets/kart-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 256px;
+    width: 636px;
+    border-radius: 1rem;
+}
+
+#card-three {
+    background-image: url('../Assets/adv-aseets/kart-3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 256px;
+    width: 636px;
+    border-radius: 1rem;
+}
+
+#card-text {
+    padding-top: 25px;
+    padding-left: 35px;
+    font-size: 20px;
+    font-family: 'Quattrocento', serif;
+    color: white;
+}
+
+#card-text-two {
+    padding-top: 25px;
+    padding-left: 15px;
+    width: 40%;
+    font-size: 20px;
+    font-family: 'Quattrocento', serif;
+    color: white;
+}
+
+#card-text-three {
+    padding-top: 25px;
+    padding-left: 15px;
+    width: 50%;
+    font-size: 20px;
+    font-family: 'Quattrocento', serif;
+    color: black;
+}
+
+#red {
+    color: #CE2829;
+}
+
+.card-button {
+    color: #CE2829;
+    background-color: white;
+    padding: 15px 15px;
+    border-radius: 100px;
+    border: 0px rgb(255, 255, 255) solid;
+    font-size: 15px;
+    font-family: 'Satify', sans-serif;
+}
+
+.card-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

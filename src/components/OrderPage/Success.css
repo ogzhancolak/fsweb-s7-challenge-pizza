@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Quattrocento&family=Satisfy&display=swap');
+
+#success-page-container {
+    background-color: #ce2829;
+    height: 100vh;
+    color: white;
+}
+
+#success-header {
+    padding: 20px;
+    text-align: center;
+    font-family: 'Quattrocento', serif;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+#message {
+    margin-top: -20px;
+}
+
+#success-page-content {
+    display: flex;
+    justify-content: center;
+}
+
+#success-page-content-container {
+    text-align: center;
+    padding-top: 50px;
+}
+
+#succes-page-content-container-two {
+    text-align: center;
+}
+
+#product-name {
+    margin-bottom: 4rem;
+    font-size: 1.4em;
+    font-weight: bolder;
+}
+
+#success-page-content-container p {
+    font-family: 'Satisfy', cursive;
+    color: #FDC913;
+    font-size: 1.5em;
+}
+
+#success-page-content-container h2 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 3em;
+    font-weight: bolder;
+    margin-top: -10px;
+    margin-bottom: 30px
+}
+
+.custom-hr {
+    width: 35rem;
+    margin-bottom: 40px;
+}
+
+#success-page-details p {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+
+
