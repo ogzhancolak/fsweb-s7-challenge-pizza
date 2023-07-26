@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./OrderForm.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Success from "./Success"; 
+import * as Yup from 'yup';
 
 function OrderForm({ product }) {
 
@@ -15,6 +15,7 @@ function OrderForm({ product }) {
     const negative = useNavigate();
 
     const [orderDetails, setOrderDetails] = useState(null);
+    const [validationErrors, setValidationErrors] = useState({});
 
     const handleSizeChange = (event) => {
         setSize(event.target.value);
@@ -27,7 +28,9 @@ function OrderForm({ product }) {
     const handleToppingsChange = (event) => {
         const { value, checked } = event.target;
         if (checked) {
-            setToppings([...toppings, value]);
+            if (toppings.length < 5) {
+                setToppings([...toppings, value]);
+            }
         } else {
             setToppings(toppings.filter((topping) => topping !== value));
         }
@@ -67,21 +70,27 @@ function OrderForm({ product }) {
         return totalPrice;
     };
 
+    const orderFormSchema = Yup.object().shape({
+        toppings: Yup.array().min(2, 'En az 2 ek malzeme seçmelisiniz.').max(5, 'En fazla 5 ek malzeme seçebilirsiniz.'),
+    });
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target;
         if (form.checkValidity()) {
-            const order = {
-                pizzaAdi: product.pizzaAdi,
-                size: size,
-                crust: crust,
-                toppings: toppings,
-                note: note,
-                quantity: quantity,
-                totalPrice: calculateTotalPrice(),
-            };
-
             try {
+                await orderFormSchema.validate({ toppings }, { abortEarly: false });
+
+                const order = {
+                    pizzaAdi: product.pizzaAdi,
+                    size: size,
+                    crust: crust,
+                    toppings: toppings,
+                    note: note,
+                    quantity: quantity,
+                    totalPrice: calculateTotalPrice(),
+                };
+
                 // Sipariş veri nesnesini API'ye gönder
                 const response = await axios.post(
                     "https://6457e4580c15cb1482137304.mockapi.io/uruncesitleri",
@@ -93,16 +102,34 @@ function OrderForm({ product }) {
                 // Başarılı sipariş sayfasına yönlendir
                 form.reset();
                 setOrderDetails(order);
-                negative(`/success`, {state: {orderDetails: order}})
-                alert("Siparişiniz başarıyla alınmıştır!");
+                negative(`/success`, { state: { orderDetails: order } })
             } catch (error) {
-                alert("Siparişiniz gönderilemedi. Lütfen daha sonra tekrar deneyin.");
+                const errors = {};
+                error.inner.forEach((err) => {
+                    errors[err.path] = err.message;
+                });
+                setValidationErrors(errors);
             }
         } else {
             alert("Lütfen zorunlu alanları doldurunuz.");
         }
     };
 
+
+
+    const toppingsList = [
+        { value: "pepperoni", label: "Pepperoni" },
+        { value: "domates", label: "Domates" },
+        { value: "biber", label: "Biber" },
+        { value: "sosis", label: "Sosis" },
+        { value: "mısır", label: "Mısır" },
+        { value: "sucuk", label: "Sucuk" },
+        { value: "ananas", label: "Ananas" },
+        { value: "jalepeno", label: "Jalepeno" },
+        { value: "kabak", label: "Kabak" },
+        { value: "soğan", label: "Soğan" },
+        { value: "sarımsak", label: "Sarımsak" },
+    ];
 
     return (
         <form onSubmit={handleSubmit} className="order-form">
@@ -138,106 +165,21 @@ function OrderForm({ product }) {
             <div className="form-group">
                 <label>Ek Malzemeler</label>
                 <div className="checkbox-group">
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="pepperoni"
-                            checked={toppings.includes("pepperoni")}
-                            onChange={handleToppingsChange}
-                        />
-                        Pepperoni
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="domates"
-                            checked={toppings.includes("domates")}
-                            onChange={handleToppingsChange}
-                        />
-                        Domates
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="biber"
-                            checked={toppings.includes("biber")}
-                            onChange={handleToppingsChange}
-                        />
-                        Biber
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="sosis"
-                            checked={toppings.includes("sosis")}
-                            onChange={handleToppingsChange}
-                        />
-                        Sosis
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="mısır"
-                            checked={toppings.includes("mısır")}
-                            onChange={handleToppingsChange}
-                        />
-                        Mısır
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="sucuk"
-                            checked={toppings.includes("sucuk")}
-                            onChange={handleToppingsChange}
-                        />
-                        Sucuk
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="ananas"
-                            checked={toppings.includes("ananas")}
-                            onChange={handleToppingsChange}
-                        />
-                        Ananas
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="jalepeno"
-                            checked={toppings.includes("jalepeno")}
-                            onChange={handleToppingsChange}
-                        />
-                        Jalepeno
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="kabak"
-                            checked={toppings.includes("kabak")}
-                            onChange={handleToppingsChange}
-                        />
-                        Kabak
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="soğan"
-                            checked={toppings.includes("soğan")}
-                            onChange={handleToppingsChange}
-                        />
-                        Soğan
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="sarımsak"
-                            checked={toppings.includes("sarımsak")}
-                            onChange={handleToppingsChange}
-                        />
-                        Sarımsak
-                    </label>
+                    {toppingsList.map((topping) => (
+                        <label key={topping.value}>
+                            <input
+                                type="checkbox"
+                                value={topping.value}
+                                checked={toppings.includes(topping.value)}
+                                onChange={handleToppingsChange}
+                            />
+                            {topping.label}
+                        </label>
+                    ))}
                 </div>
+                {validationErrors.toppings && (
+                    <div className="error-message">{validationErrors.toppings}</div>
+                )}
             </div>
             <div className="form-group">
                 <label htmlFor="note">Sipariş Notu</label>
@@ -245,6 +187,7 @@ function OrderForm({ product }) {
                     id="note"
                     name="note"
                     value={note}
+                    placeholder="Eklemek istediğiniz not var mı?"
                     onChange={handleNoteChange}
                     rows="4"
                 ></textarea>
@@ -266,7 +209,7 @@ function OrderForm({ product }) {
                 <span id="total-price">{calculateTotalPrice()} ₺</span>
             </div>
             <div className="form-group">
-                    <button type="submit" >Sipariş Ver</button>
+                <button type="submit" >Sipariş Ver</button>
             </div>
         </form>
     );

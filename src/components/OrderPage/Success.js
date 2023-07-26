@@ -8,6 +8,7 @@ function Success() {
     const navigate = useNavigate();
     const orderDetails = location.state.orderDetails;
 
+    
     useEffect (() => {
         const timer = setTimeout(() => {
             navigate(`/`);
@@ -15,6 +16,7 @@ function Success() {
 
         return () => clearTimeout(timer);
     }, [navigate])
+    
 
     return (
         <div id="success-page-container">

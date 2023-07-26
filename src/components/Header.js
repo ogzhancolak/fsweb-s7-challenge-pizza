@@ -3,7 +3,7 @@ import "../layout/Header.css"
 import { Link, animateScroll as scroll } from "react-scroll"
 
 const scrollMiddle = () => {
-    scroll.scrollTo(1500, { duration: 1500, delay: 100, smooth: "easeInOutQuart" })
+    scroll.scrollTo(900, { duration: 1000, delay: 100, smooth: "easeInOutQuart" })
 }
 
 function Header() {

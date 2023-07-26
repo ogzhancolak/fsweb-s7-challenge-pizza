@@ -9,7 +9,7 @@ function ProductsAll() {
     const [allproducts, setAllproducts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://6457e4580c15cb1482137304.mockapi.io/uruncesitleri')
+        axios.get('https://6457e4580c15cb1482137304.mockapi.io/pizza')
             .then(res => {
                 console.log(res.data);
                 setAllproducts(res.data);

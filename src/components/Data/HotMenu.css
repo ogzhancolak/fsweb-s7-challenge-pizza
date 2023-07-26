@@ -11,13 +11,13 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: 55%;
+    width: 75%;
 }
 
 .products-types {
     border-radius: 1em;
     background-color: #fff;
-    padding: 15px 40px;
+    padding: 15px 30px;
     border-color: #ffffff00;
     margin-bottom: 30px;
 }

@@ -23,7 +23,7 @@ const HotMenu = () => {
             <div id="products-main-container">
                 <div className='products'>
                     {products.map(products => (
-                        <Link key={products.id} to={`/`}>
+                        <Link key={products.id} to={`/order/${products.id}`}>
                             <button className='products-types'>
                                 <img src={products.foto} />
                                 <div className='products-price'>
